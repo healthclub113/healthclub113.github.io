@@ -291,7 +291,7 @@
       </div>
       <a class="btn" id="r-tg" href="#" onclick="send('tg');return false;">Написать «КОРЗИНА» в Telegram</a>
       <a class="btn-max" id="r-max" href="#" onclick="send('max');return false;">Написать «КОРЗИНА» в MAX</a>
-      <div class="note" id="send-note">Ответы скопируются, чат откроется. Останется вставить сообщение и нажать отправить.</div>
+      <div class="note" id="send-note">Ответы скопируются, а в чате уже будет приветствие. Вставьте их вторым сообщением.</div>
       <details class="manual">
         <summary>Не вставилось? Скопировать вручную</summary>
         <textarea id="msg" readonly></textarea>
@@ -442,26 +442,42 @@ function buildMessage(title){
   return `Юлия, приветствую! Собрал свой формат Health-корзины на вашем сайте.\n\nМои ответы:\n${lines}\n\nПодошедший формат: ${title}\nУровень: ${a.kit}\n\nКодовое слово: КОРЗИНА.`;
 }
 
-async function send(where){
+function send(where){
   const text = $('msg').value;
+
+  /* Синхронно кладём полный текст в буфер, пока страница в фокусе.
+     Никаких await до открытия вкладки, иначе окно блокируется. */
   let copied = false;
   try{
-    await navigator.clipboard.writeText(text);
-    copied = true;
-  }catch(e){
-    try{
-      const t = $('msg');
-      t.removeAttribute('readonly');
-      t.select();
-      copied = document.execCommand('copy');
-      t.setAttribute('readonly','readonly');
-    }catch(e2){ copied = false; }
-  }
+    const t = $('msg');
+    t.removeAttribute('readonly');
+    t.focus();
+    t.setSelectionRange(0, text.length);
+    copied = document.execCommand('copy');
+    t.setAttribute('readonly','readonly');
+  }catch(e){ copied = false; }
+  try{
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).catch(function(){});
+      copied = true;
+    }
+  }catch(e){}
+
   $('send-note').textContent = copied
-    ? 'Ответы скопированы. Вставьте их в чат и нажмите отправить.'
-    : 'Скопировать не получилось. Откройте «Скопировать вручную» ниже и скопируйте текст.';
+    ? 'Ответы скопированы. В чате уже есть приветствие, вставьте ответы вторым сообщением.'
+    : 'Скопировать не вышло. Откройте «Скопировать вручную» ниже и скопируйте текст.';
   goal(where === 'tg' ? 'cta_tg' : 'cta_max');
-  window.open(where === 'tg' ? TG_URL : MAX_URL, '_blank', 'noopener');
+
+  /* Короткое приветствие в ссылку, чтобы поле ввода не открывалось пустым */
+  if(where === 'tg'){
+    const ping = 'Юлия, приветствую! Собрал формат Health-корзины, ответы вставляю следующим сообщением.';
+    const url = TG_URL + '?text=' + encodeURIComponent(ping);
+    const w = window.open(url, '_blank', 'noopener');
+    if(!w){ window.location.href = url; }
+  } else {
+    const w = window.open(MAX_URL, '_blank', 'noopener');
+    if(!w){ window.location.href = MAX_URL; }
+  }
 }
 
 function restart(){
@@ -470,7 +486,7 @@ function restart(){
   sticky.textContent = 'Собрать свой формат';
   sticky.onclick = (ev) => { ev.preventDefault(); scrollToQuiz(); };
   $('q-fill').style.width = '0%';
-  $('send-note').textContent = 'Ответы скопируются, чат откроется. Останется вставить сообщение и нажать отправить.';
+  $('send-note').textContent = 'Ответы скопируются, а в чате уже будет приветствие. Вставьте их вторым сообщением.';
   $('q-res').classList.add('hidden');
   $('q-run').classList.remove('hidden');
   render();
