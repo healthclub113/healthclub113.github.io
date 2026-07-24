@@ -12,8 +12,6 @@
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F2EFE6">
-<link rel="canonical" href="https://healthclub113.github.io/korzina.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
@@ -150,7 +148,6 @@
   footer{text-align:center;padding:14px 0 34px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);line-height:2}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<noscript><style>.sticky{display:none}.hidden{display:none!important}</style></noscript>
 </head>
 <body>
 <div class="wrap">
@@ -305,7 +302,7 @@
 
   <!-- АВТОР -->
   <div class="card author" id="author">
-    <img src="https://healthclub113.github.io/test-energii/photo.jpeg" alt="Юлия Артемова" width="104" height="104" loading="lazy" decoding="async">
+    <img src="https://healthclub113.github.io/test-energii/photo.jpeg" alt="Юлия Артемова">
     <b>Julia Artemova</b>
     <span>Health-коуч предпринимателей и топов</span>
     <p style="font-size:14.5px;margin-top:12px">Девять лет в корпоративном бизнесе: переговоры, командировки, обеды между встречами. Вашу нагрузку знаю изнутри, поэтому собираю питание под график, а не график под питание.</p>
@@ -325,7 +322,6 @@
 <script>
 const $ = id => document.getElementById(id);
 function goal(name){ try{ if(typeof ym==='function') ym(110504158,'reachGoal',name); }catch(e){} }
-function contactGoal(channel){ goal('korzina_contact_open'); goal(channel === 'tg' ? 'cta_tg' : 'cta_max'); }
 
 /* ССЫЛКИ */
 const TG_URL = "https://t.me/jua_artemova";
@@ -362,8 +358,6 @@ let i = 0, a = {}, picks = [], ready = false;
   const bar = document.getElementById('sticky');
   const heroBtn = document.getElementById('hero-cta');
   const authorBlock = document.getElementById('author');
-  if(!bar || !heroBtn || !authorBlock) return;
-  if(!('IntersectionObserver' in window)) return;
   let heroGone = false, authorHere = false;
   const paint = () => bar.classList.toggle('show', heroGone && !authorHere);
   new IntersectionObserver(([e]) => { heroGone = !e.isIntersecting; paint(); }).observe(heroBtn);
@@ -450,37 +444,24 @@ function buildMessage(title){
 
 async function send(where){
   const text = $('msg').value;
-  const url = where === 'tg' ? TG_URL : MAX_URL;
-  // Открываем чат сразу внутри пользовательского клика. Иначе Safari и встроенные браузеры
-  // могут заблокировать окно после ожидания Clipboard API.
-  const chat = window.open(url, '_blank', 'noopener');
-  contactGoal(where);
-
   let copied = false;
   try{
-    if(navigator.clipboard && window.isSecureContext){
-      await navigator.clipboard.writeText(text);
-      copied = true;
-    }
-  }catch(e){}
-
-  if(!copied){
+    await navigator.clipboard.writeText(text);
+    copied = true;
+  }catch(e){
     try{
       const t = $('msg');
       t.removeAttribute('readonly');
-      t.focus();
       t.select();
-      t.setSelectionRange(0, t.value.length);
       copied = document.execCommand('copy');
       t.setAttribute('readonly','readonly');
     }catch(e2){ copied = false; }
   }
-
   $('send-note').textContent = copied
     ? 'Ответы скопированы. Вставьте их в чат и нажмите отправить.'
     : 'Скопировать не получилось. Откройте «Скопировать вручную» ниже и скопируйте текст.';
-
-  if(!chat){ window.location.href = url; }
+  goal(where === 'tg' ? 'cta_tg' : 'cta_max');
+  window.open(where === 'tg' ? TG_URL : MAX_URL, '_blank', 'noopener');
 }
 
 function restart(){
