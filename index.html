@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Юлия Артемова, health-коуч предпринимателей и топов · HEALTH CLUB 113</title>
+<meta name="description" content="Health-коуч, это финдиректор, только по вашей энергии. Сон, стресс, питание и восстановление в одной системе под реальный график.">
+<meta name="theme-color" content="#F2EFE6">
+<meta property="og:title" content="Юлия Артемова · HEALTH CLUB 113">
+<meta property="og:description" content="Health-коуч, это финдиректор, только по вашей энергии.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2EFE6; --card:#FFFFFF; --soft:#F5F2EA;
+    --ink:#141613; --gray:#6E7069; --line:rgba(20,22,19,.10);
+    --gold:#D9A441; --gold-d:#B8862F; --gold-soft:#F0E4C6;
+    --titan:#2D312D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Golos Text',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+  .page{width:210mm;min-height:297mm;margin:0 auto;padding:16mm 14mm;display:flex;flex-direction:column;gap:9px}
+  .card{background:var(--card);border-radius:16px;padding:22px 24px}
+  .card.soft{background:var(--soft)}
+
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 4px 6px}
+  .top-l{display:flex;align-items:center;gap:14px}
+  .top img{width:56px;height:56px;border-radius:99px;object-fit:cover;border:2px solid var(--gold-soft);flex:0 0 56px}
+  .brand{font-family:'Unbounded',sans-serif;font-weight:700;font-size:15px;letter-spacing:.01em}
+  .brand-sub{font-size:10px;color:var(--gray);margin-top:4px}
+  .top-r{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);text-align:right;line-height:1.6}
+
+  .hero{padding:34px 28px 30px}
+  h1{font-family:'Unbounded',sans-serif;font-weight:700;font-size:25px;line-height:1.28;letter-spacing:-.01em}
+  .verdict{font-size:15px;font-weight:600;color:var(--gold-d);margin-top:14px;line-height:1.45}
+  .rule{width:44px;height:2px;border-radius:2px;background:var(--gold);margin:20px 0 18px}
+  .answer{font-family:'Unbounded',sans-serif;font-weight:600;font-size:14px;line-height:1.4;color:var(--ink)}
+  .answer + p{margin-top:9px}
+  p{font-size:11.5px;line-height:1.65;color:var(--gray)}
+
+  .promise{background:var(--soft);border-radius:12px;padding:14px 16px;font-size:12.5px;font-weight:600;line-height:1.5;color:var(--ink)}
+
+  .eyebrow{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px}
+  .eyebrow.gray{color:var(--gray)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px}
+  .grid2 div{position:relative;padding:2px 0 2px 15px;font-size:11px;line-height:1.45;color:var(--ink)}
+  .grid2 div::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:99px;background:var(--gold)}
+
+  table.why{width:100%;border-collapse:collapse;font-size:11px}
+  table.why td{padding:8px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+  table.why tr:last-child td{border-bottom:none}
+  table.why td:first-child{width:38%;color:var(--ink);font-weight:500;padding-right:10px}
+  table.why td:last-child{color:var(--gray)}
+  table.why tr.me td:first-child{color:var(--gold-d);font-weight:600}
+  table.why tr.me td:last-child{color:var(--ink)}
+
+  .steps{display:flex;justify-content:space-between;gap:6px}
+  .step{flex:1;text-align:center}
+  .dot{width:7px;height:7px;border-radius:99px;background:var(--gold);margin:0 auto 8px}
+  .step b{display:block;font-size:10.5px;font-weight:600;color:var(--ink)}
+  .step span{font-size:8.5px;color:var(--gray);line-height:1.35;display:block;margin-top:3px}
+
+  .cta{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+  .cta-left{flex:1}
+  .cta-left h2{font-family:'Unbounded',sans-serif;font-weight:600;font-size:13.5px;line-height:1.35;margin-bottom:7px}
+  .btn{display:inline-block;background:var(--titan);box-shadow:inset 0 1px 0 rgba(255,255,255,.10);color:#F2EFE6;font-weight:600;font-size:11.5px;border-radius:10px;padding:11px 20px;text-decoration:none;margin-top:11px}
+  .links{display:flex;flex-direction:column;gap:6px;flex:0 0 150px}
+  .link{border:1px solid rgba(20,22,19,.22);border-radius:10px;padding:9px 12px;text-align:center;font-size:11px;font-weight:600;color:var(--ink);text-decoration:none}
+  .ig{font-size:10px;color:var(--gray);text-align:center}
+  .ig b{color:var(--gold-d);font-weight:600}
+
+  footer{text-align:center;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);padding-top:8px}
+
+  @page{size:A4;margin:0}
+  @media print{ .page{margin:0} }
+  @media (max-width:800px){
+    .page{width:100%;min-height:0;padding:18px 14px}
+    h1{font-size:22px}
+    .cta{flex-direction:column;align-items:stretch;gap:14px}
+    .links{flex:1}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <div class="top-l">
+      <img src="https://healthclub113.github.io/test-energii/photo.jpeg" alt="Юлия Артемова" width="56" height="56" decoding="async">
+      <div>
+        <div class="brand">HEALTH CLUB 113</div>
+        <div class="brand-sub">Юлия Артемова, health-коуч</div>
+      </div>
+    </div>
+    <div class="top-r">Искусство управления<br>энергией и качеством жизни</div>
+  </div>
+
+  <div class="card hero">
+    <h1>Просыпаетесь уже уставшим, к вечеру пусто, в переговорах раздражает ерунда.</h1>
+    <div class="verdict">Это не характер. Это утечка энергии, и её видно.</div>
+    <div class="rule"></div>
+    <div class="answer">Health-коуч, это финдиректор, только по вашей энергии.</div>
+    <p>Отвечаю за неё так же, как финдиректор за деньги: собираю сон, стресс, питание и восстановление в одну систему под график, где авралы и перелёты норма. Девять лет в корпоративном бизнесе, вашу нагрузку знаю изнутри.</p>
+  </div>
+
+  <div class="card">
+    <div class="promise">Ясная голова с утра и ровная энергия до вечера, без смены графика. Первые измеримые сдвиги за 2 недели.</div>
+    <div class="grid2" style="margin-top:16px">
+      <div>Именная дорожная карта под ваш график</div>
+      <div>Один измеримый сдвиг, не двадцать привычек</div>
+      <div>Замеры до и после: сон и энергия</div>
+      <div>На языке бизнеса, без эзотерики</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow gray">Почему я, а не тренер или врач</div>
+    <table class="why">
+      <tr><td>Фитнес-тренер</td><td>тело и нагрузка. Один рычаг.</td></tr>
+      <tr><td>Нутрициолог</td><td>рацион. Один рычаг.</td></tr>
+      <tr><td>Врач</td><td>лечит болезни. Медицинская рамка.</td></tr>
+      <tr class="me"><td>Health-коуч, я</td><td>энергия как система, отвечаю за результат.</td></tr>
+    </table>
+  </div>
+
+  <div class="card soft">
+    <div class="eyebrow gray">Как проходит работа</div>
+    <div class="steps">
+      <div class="step"><div class="dot"></div><b>Тест</b><span>симптомы</span></div>
+      <div class="step"><div class="dot"></div><b>Профиль</b><span>причины</span></div>
+      <div class="step"><div class="dot"></div><b>Аудит</b><span>что чинить первым</span></div>
+      <div class="step"><div class="dot"></div><b>Сопровождение</b><span>одно изменение, замер</span></div>
+      <div class="step"><div class="dot"></div><b>Стратегия</b><span>система на год</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="cta">
+      <div class="cta-left">
+        <h2>Начните с бесплатного теста энергии</h2>
+        <p>Две минуты, и вы увидите свои симптомы. Дальше Health-аудит, 5 000: именная дорожная карта, что чинить первым.</p>
+        <a class="btn" href="https://healthclub113.github.io/test-energii/" target="_blank" rel="noopener">Пройти тест энергии →</a>
+      </div>
+      <div class="links">
+        <a class="link" href="https://t.me/jua_artemova" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="link" href="https://max.ru/u/f9LHodD0cOJcxNSB0UMmR3HFqo-0mWo_VwrPAbYcdqGk_O28jWRDzNs-Tbw" target="_blank" rel="noopener">Написать в MAX</a>
+        <div class="ig">Instagram <b>jua_artemova</b></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>HEALTH CLUB 113</footer>
+
+</div>
+</body>
+</html>
