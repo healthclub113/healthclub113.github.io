@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Health Club 113 · Как я работаю с вашей энергией</title>
+<meta name="description" content="Health-коуч предпринимателей и топов. Личный финдиректор по вашей энергии. Начните с бесплатного теста.">
+<meta property="og:title" content="Health-коуч, это финдиректор, только по вашей энергии">
+<meta property="og:description" content="Собираю сон, стресс, питание и восстановление в одну систему под ваш график. Начните с бесплатного теста энергии.">
+<meta property="og:image" content="https://healthclub113.github.io/og.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2EFE6; --card:#FFFFFF; --soft:#F5F2EA;
+    --ink:#141613; --gray:#6E7069; --line:rgba(20,22,19,.10);
+    --gold:#D9A441; --gold-d:#B8862F; --gold-soft:#F0E4C6;
+    --titan:#2D312D; --titan-h:#383D37;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Golos Text',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{width:min(560px,92vw);margin:0 auto;padding:30px 0 110px}
+  .card{background:var(--card);border-radius:22px;padding:32px 26px;margin-bottom:22px;box-shadow:0 10px 30px -18px rgba(20,22,19,.35)}
+  .card.soft{background:var(--soft);box-shadow:none;border:1px solid var(--line)}
+
+  /* шапка */
+  .top{display:flex;align-items:center;gap:16px;margin-bottom:22px;padding:0 4px}
+  .top img{width:72px;height:72px;border-radius:99px;object-fit:cover;border:2px solid var(--gold-soft);flex:0 0 72px}
+  .brand{font-family:'Unbounded',sans-serif;font-weight:700;font-size:17px;letter-spacing:.01em;line-height:1.15}
+  .brand-sub{font-size:12px;color:var(--gray);margin-top:6px}
+
+  h1{font-family:'Unbounded',sans-serif;font-weight:700;font-size:clamp(22px,5.6vw,27px);line-height:1.22;letter-spacing:-.015em;margin-bottom:16px}
+  .lead{color:var(--gray);font-size:16px;line-height:1.65}
+  .rule{width:56px;height:3px;border-radius:3px;background:var(--gold);margin:22px 0}
+  .verdict{font-size:16px;font-weight:600;color:var(--gold-d);line-height:1.55}
+
+  h2{font-family:'Unbounded',sans-serif;font-weight:700;font-size:19px;line-height:1.3;margin-bottom:16px}
+  .eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);margin-bottom:14px}
+  .eyebrow.gray{color:var(--gray)}
+  p{color:var(--gray)}
+
+  .res{display:flex;flex-direction:column;gap:12px}
+  .res div{position:relative;padding-left:26px;font-size:15.5px;line-height:1.5;color:var(--ink);font-weight:500}
+  .res div::before{content:'✓';position:absolute;left:0;top:0;color:var(--gold-d);font-weight:700;font-size:16px}
+
+  table.why{width:100%;border-collapse:collapse;font-size:14.5px}
+  table.why td{padding:12px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+  table.why tr:last-child td{border-bottom:none}
+  table.why td:first-child{width:42%;color:var(--ink);font-weight:600;padding-right:12px}
+  table.why td:last-child{color:var(--gray)}
+  table.why tr.me td:first-child{color:var(--gold-d)}
+  table.why tr.me td:last-child{color:var(--ink)}
+  .why-note{font-size:14.5px;color:var(--ink);font-weight:500;margin-top:14px;line-height:1.5}
+
+  .steps{display:flex;justify-content:space-between;gap:6px;margin-top:4px}
+  .step{flex:1;text-align:center}
+  .dot{width:9px;height:9px;border-radius:99px;background:var(--gold);margin:0 auto 10px}
+  .step b{display:block;font-size:12px;font-weight:600;color:var(--ink);line-height:1.2}
+  .step span{font-size:9.5px;color:var(--gray);line-height:1.3;display:block;margin-top:4px}
+
+  .btn{display:block;width:100%;border:none;cursor:pointer;font-family:'Golos Text',sans-serif;font-weight:600;font-size:16.5px;background:var(--titan);color:#F2EFE6;border-radius:14px;padding:18px 16px;text-align:center;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 12px 28px -18px rgba(20,22,19,.65);transition:transform .12s ease,background .18s}
+  .btn:hover{background:var(--titan-h)}
+  .btn:active{transform:scale(.98)}
+  .btn-line{display:block;width:100%;text-align:center;margin-top:10px;background:#fff;border:1px solid rgba(20,22,19,.22);border-radius:14px;padding:15px 16px;font-family:'Golos Text',sans-serif;font-weight:600;font-size:15.5px;color:var(--ink);text-decoration:none;transition:background .15s,border-color .15s}
+  .btn-line:hover{background:var(--soft);border-color:rgba(20,22,19,.4)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+  .row2 .btn-line{margin-top:0}
+
+  footer{text-align:center;padding:16px 0 34px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(242,239,230,0),rgba(242,239,230,.96) 42%);transform:translateY(120%);transition:transform .28s cubic-bezier(.22,1,.36,1);pointer-events:none}
+  .sticky.show{transform:translateY(0);pointer-events:auto}
+  .sticky .btn{max-width:560px;margin:0 auto}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <img src="https://healthclub113.github.io/test-energii/photo.jpeg" alt="Юлия Артемова">
+    <div>
+      <div class="brand">HEALTH CLUB 113</div>
+      <div class="brand-sub">Юлия Артемова · health-коуч</div>
+    </div>
+  </div>
+
+  <!-- ГЕРОЙ: кто я + боль -->
+  <div class="card">
+    <div class="eyebrow">Health-коуч предпринимателей и топов</div>
+    <h1>Health-коуч, это финдиректор, только по вашей энергии.</h1>
+    <p class="lead">Отвечаю за вашу энергию так же, как финдиректор за деньги: вижу, где она утекает, и возвращаю. Сон, стресс, питание и восстановление собираю в одну систему под ваш график, где авралы и перелёты норма. Девять лет в корпоративном бизнесе, вашу нагрузку знаю изнутри.</p>
+    <div class="rule"></div>
+    <div class="verdict">Просыпаетесь уже уставшим, к вечеру пусто, в переговорах раздражает ерунда. Это не характер. Это утечка энергии, и её видно.</div>
+    <div style="margin-top:24px">
+      <button class="btn" id="hero-cta" onclick="goTest()">Пройти тест энергии · 2 минуты</button>
+    </div>
+  </div>
+
+  <!-- РЕЗУЛЬТАТ -->
+  <div class="card soft">
+    <div class="eyebrow gray">Что меняется за 2 недели</div>
+    <div class="res">
+      <div>Ясная голова при подъёме, без разбитости</div>
+      <div>Ровная энергия с утра до вечера, без тяги к сладкому</div>
+      <div>Устойчивость в жёстких переговорах</div>
+    </div>
+  </div>
+
+  <!-- ПОЧЕМУ Я -->
+  <div class="card">
+    <h2>Почему я, а не тренер или врач</h2>
+    <table class="why">
+      <tr><td>Фитнес-тренер</td><td>тело и нагрузка. Один рычаг.</td></tr>
+      <tr><td>Нутрициолог</td><td>рацион. Один рычаг.</td></tr>
+      <tr><td>Врач</td><td>лечит болезни. Медицинская рамка.</td></tr>
+      <tr class="me"><td>Health-коуч, я</td><td>энергия как система, отвечаю за результат.</td></tr>
+    </table>
+    <p class="why-note">Четыре специалиста дадут четыре мнения. Я даю один результат.</p>
+  </div>
+
+  <!-- КАК ПРОХОДИТ -->
+  <div class="card soft">
+    <div class="eyebrow gray">Как проходит работа</div>
+    <div class="steps">
+      <div class="step"><div class="dot"></div><b>Тест</b><span>симптомы</span></div>
+      <div class="step"><div class="dot"></div><b>Профиль</b><span>причины</span></div>
+      <div class="step"><div class="dot"></div><b>Аудит</b><span>что чинить первым</span></div>
+      <div class="step"><div class="dot"></div><b>Месяц</b><span>убираем утечку</span></div>
+      <div class="step"><div class="dot"></div><b>Стратегия</b><span>система на год</span></div>
+    </div>
+  </div>
+
+  <!-- ВХОД -->
+  <div class="card" id="cta">
+    <h2>Начните с бесплатного теста</h2>
+    <p style="font-size:15.5px">Восемь вопросов, две минуты. В конце ваша зона и слабые места. Дальше, если захотите, Health-профиль вскроет причины именно вашего состояния, а на аудите разберём, что чинить первым.</p>
+    <div style="margin-top:20px">
+      <button class="btn" onclick="goTest()">Пройти тест энергии</button>
+      <a class="btn-line" href="https://t.me/jua_artemova?text=%D0%AE%D0%BB%D0%B8%D1%8F%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D1%83%D1%8E!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20Health-%D0%B0%D1%83%D0%B4%D0%B8%D1%82." target="_blank" rel="noopener" style="margin-top:10px">Уже готовы к разбору? Записаться на Health-аудит</a>
+      <div class="row2" style="margin-top:10px">
+        <a class="btn-line" href="https://t.me/jua_artemova" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn-line" href="https://max.ru/u/f9LHodD0cOJcxNSB0UMmR3HFqo-0mWo_VwrPAbYcdqGk_O28jWRDzNs-Tbw" target="_blank" rel="noopener">MAX</a>
+      </div>
+      <a class="btn-line" href="https://instagram.com/jua_artemova" target="_blank" rel="noopener" style="margin-top:10px">Instagram · jua_artemova</a>
+    </div>
+  </div>
+
+  <div class="sticky" id="sticky">
+    <button class="btn" onclick="goTest()">Пройти тест энергии</button>
+  </div>
+
+  <footer>Жить дольше · Думать яснее · Создавать больше</footer>
+</div>
+
+<script>
+function goTest(){ window.location.href = 'https://healthclub113.github.io/test-energii/'; }
+(function(){
+  const bar = document.getElementById('sticky');
+  const heroBtn = document.getElementById('hero-cta');
+  const cta = document.getElementById('cta');
+  let heroGone = false, ctaHere = false;
+  const paint = () => bar.classList.toggle('show', heroGone && !ctaHere);
+  new IntersectionObserver(([e]) => { heroGone = !e.isIntersecting; paint(); }).observe(heroBtn);
+  new IntersectionObserver(([e]) => { ctaHere = e.isIntersecting; paint(); }).observe(cta);
+})();
+</script>
+</body>
+</html>
