@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Библиотека и идеи ТБ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#EBEDE7;--paper:#FBFBF9;--ink:#15211C;--muted:#697570;--line:#DBDFD6;
+    --emerald:#17794A;--emerald-deep:#0F5A37;--emerald-soft:#E5F0E8;--amber:#A9691F;--amber-soft:#F4EADB;
+    --shadow:0 1px 2px rgba(21,33,28,.04),0 8px 30px rgba(21,33,28,.06);}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Golos Text",system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 110px}
+  .cover{padding:52px 0 22px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--emerald);font-weight:600;margin:0 0 12px}
+  h1{font-family:"Unbounded",sans-serif;font-weight:800;font-size:clamp(30px,6vw,52px);line-height:1.03;letter-spacing:-.01em;margin:0 0 8px}
+  .sub{font-size:clamp(15px,2.3vw,19px);color:var(--muted);font-weight:500;margin:0 0 16px}
+  .intro{max-width:640px;color:#3a463f;font-size:15px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--paper)}
+  .chip.prog{background:var(--emerald-soft);border-color:#BEDCC9;color:var(--emerald-deep)}
+  .chip.you{background:var(--amber-soft);border-color:#E4CFAE;color:var(--amber)}
+  .section-label{font-family:"Unbounded",sans-serif;font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:32px 0 12px}
+  .ref{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+  .ref>summary{list-style:none;cursor:pointer;padding:17px 20px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:16px}
+  .ref>summary::-webkit-details-marker{display:none}
+  .ref>summary .ico{font-size:19px}
+  .ref>summary .cnt{margin-left:auto;font-size:13px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:10px}
+  .ref>summary .arw{transition:.2s}
+  .ref[open]>summary .arw{transform:rotate(90deg)}
+  .tbl{width:100%;border-collapse:collapse}
+  .tbl th{background:var(--emerald);color:#fff;text-align:left;font-size:12.5px;font-weight:700;padding:9px 14px}
+  .tbl td{padding:11px 14px;border-top:1px solid var(--line);font-size:14px;vertical-align:top}
+  .tbl tr.prog td{background:var(--emerald-soft)}
+  .tbl tr.you td{background:var(--amber-soft)}
+  .tbl td.t{font-weight:600}
+  .tbl td.m{color:var(--muted)}
+  .tbl td .au{color:#3a463f}
+  .del{cursor:pointer;border:none;background:none;color:var(--amber);font-size:15px;font-weight:700;padding:0 4px}
+  .clarify{padding:6px 20px 18px;margin:0}
+  .clarify li{font-size:14px;margin:7px 0;color:#3a463f}
+  .addbox{background:var(--paper);border:1px solid #E4CFAE;border-left:4px solid var(--amber);border-radius:16px;box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px}
+  .addbox>summary{cursor:pointer;list-style:none;font-weight:700;font-size:16px}
+  .addbox>summary::-webkit-details-marker{display:none}
+  .addbox p.h{margin:8px 0 12px;font-size:13.5px;color:var(--muted)}
+  .frm{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .frm .full{grid-column:1 / -1}
+  .frm label{font-size:12px;font-weight:600;color:var(--muted);display:block;margin:0 0 4px}
+  .frm input,.frm select,.frm textarea{width:100%;font:inherit;font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+  .frm textarea{resize:vertical;min-height:38px}
+  .btn{font:inherit;font-size:14px;font-weight:600;cursor:pointer;border:none;border-radius:999px;padding:10px 18px}
+  .btn.primary{background:var(--emerald);color:#fff}
+  .btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .savednote{font-size:12.5px;color:var(--emerald-deep);font-weight:600;margin-top:10px;min-height:16px}
+  .empty{color:var(--muted);font-size:14px;padding:14px 20px}
+  .foot{margin-top:36px;text-align:center;color:var(--muted);font-size:12.5px}
+  @media(max-width:560px){
+    .frm{grid-template-columns:1fr}
+    .tbl thead{display:none}
+    .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+    .tbl tr{border-top:1px solid var(--line);padding:8px 0}
+    .tbl td{border:none;padding:2px 16px}
+    .tbl td.t{font-size:15px;padding-top:8px}
+    .tbl td:not(.t)::before{content:attr(data-l)": ";color:var(--muted);font-weight:600}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="cover">
+    <p class="eyebrow">Точка Бифуркации · спутник к конспекту заданий</p>
+    <h1>Библиотека<br>и идеи ТБ</h1>
+    <p class="sub">Что читать, смотреть и за кем следить · пополняем вместе</p>
+    <p class="intro">Базовый список : из программы потока и конспектов. Нашли что-то стоящее : добавьте ниже. Ваши находки сохраняются в этом браузере; чтобы они попали в общую библиотеку, нажмите <b>«Скопировать для Юлии»</b> и пришлите в чат : Юлия внесёт их в общий файл.</p>
+    <div class="legend">
+      <span class="chip prog">Зелёные : из программы</span>
+      <span class="chip">Белые : советуют дополнительно</span>
+      <span class="chip you">Охра : ваши добавления</span>
+    </div>
+  </header>
+
+  <details class="addbox" open>
+    <summary>➕ Добавить свою находку</summary>
+    <p class="h">Заполните и нажмите «Добавить». Появится внизу, в разделе «Ваши добавления».</p>
+    <div class="frm">
+      <div>
+        <label>Рубрика</label>
+        <select id="f-type">
+          <option value="Книга">Книга</option>
+          <option value="Видео/фильм">Видео / фильм</option>
+          <option value="Блог/спикер">Блог / спикер</option>
+        </select>
+      </div>
+      <div>
+        <label>Автор / где смотреть</label>
+        <input id="f-author" placeholder="Напр.: Максим Батырев / YouTube">
+      </div>
+      <div class="full">
+        <label>Название</label>
+        <input id="f-title" placeholder="Название книги, видео или имя блогера">
+      </div>
+      <div class="full">
+        <label>О чём и зачем</label>
+        <textarea id="f-about" placeholder="Пара слов, чем полезно"></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="add">Добавить</button>
+      <button class="btn ghost" id="copy">Скопировать для Юлии</button>
+      <button class="btn ghost" id="dl">Скачать JSON</button>
+      <button class="btn ghost" id="clear">Очистить мои</button>
+    </div>
+    <p class="savednote" id="savednote"></p>
+  </details>
+
+  <p class="section-label">Рубрики</p>
+  <div id="app"></div>
+
+  <p class="section-label" id="you-label">Ваши добавления</p>
+  <div class="ref"><div id="you"></div></div>
+
+  <p class="foot">Точка Бифуркации · библиотека и идеи · пополняем вместе · прямые ссылки на видео программы есть в основном файле заданий</p>
+</div>
+
+<script>
+const books=[
+ ["Самый богатый человек в Вавилоне","Джордж Клейсон","Базовые законы денег и накоплений",1],
+ ["Кармический менеджмент","М. Роуч, К. Макнелли, М. Гордон","Отдавать, чтобы получать. 4 шага (цветка) кармы",1],
+ ["Карма любви","Геше Майкл Роуч","Карма в отношениях и любви",1],
+ ["Отдел продаж по захвату рынка","Михаил Гребенюк","Как построить системный отдел продаж",1],
+ ["Счастливый карман, полный денег","Дэвид Кэмерон Джиканди","Мышление изобилия и денег",1],
+ ["Дедлайн","Том ДеМарко","Управление проектами и командой (бизнес-роман)",1],
+ ["613 заповедей Соломона","свод","Свод жизненных принципов",1],
+ ["Деньги. Мастер игры","Тони Роббинс","Личные финансы и инвестиции",1],
+ ["Как заработать большие деньги","Березовский (по программе)","Практики заработка",1],
+ ["Отец","Игорь Рыбаков, Хабиб Нурмагомедов","Характер, ответственность, воспитание",1],
+ ["Гении и аутсайдеры","Малкольм Гладуэлл","Из чего складывается успех",1],
+ ["Разговоры, которые сближают","Павел Лебедько","Глубокая коммуникация",1],
+ ["Корпоративные хронофаги","Александр Фридман","Найти и устранить пожирателей времени",0],
+ ["Синдром самозванца (тема)","Мария Азаренок","Уверенность и личный бренд. Андрей советовал в субботу",0],
+ ["Синдром Патрика","Надежда Кобина, Елена Старостина","Личный бренд без насилия над собой",0],
+ ["Идеальный питч","Орен Клафф","Продажи, питчи, паузы в переговорах",0],
+ ["Как завоёвывать друзей и влиять на людей","Дейл Карнеги","Общение и влияние",0],
+ ["45 татуировок (серия)","Максим Батырев","Менеджмент, продажи, личность",0],
+ ["П.Ш. Роман-тренинг","Дмитрий Хара","Личностный рост в форме романа",0],
+ ["ТРИЗ","Генрих Альтшуллер","Системное изобретательское мышление (инженерам в СССР)",0],
+ ["Чертоги разума. Убей в себе идиота","Андрей Курпатов","Как мыслить яснее",0],
+ ["Просто делай! Делай просто!","Оскар Хартманн","Фокус на действии",0],
+ ["Кто, а не как","Дэн Салливан, Бенджамин Харди","Находить людей и делегировать. Линар советовал",0],
+ ["Птичья азбука","из конспектов (уточняется)","Рекомендация с лекций",0],
+];
+const videos=[
+ ["Серия С. Асафьева","YouTube / канал ТБ","Бизнес-разборы (автопром, BMW, Porsche/VW, Детройт и др.)",1],
+ ["М. Дашкиев","YouTube","Мышление и стандарты",1],
+ ["Мечты Дзиро о суши","Онлайн-кинотеатры","Мастерство и преданность делу (док.)",1],
+ ["Монти Пайтон: Священный Грааль","Онлайн-кинотеатры","Комедия, для настроя и юмора",1],
+ ["Фильм DDX","YouTube","По программе потока",1],
+ ["Грюнвальд","YouTube","По программе потока",1],
+ ["Видео Сплат","YouTube","Письма основателя SPLAT (Евгений Дёмин), ценности",1],
+ ["Интервью Рыбакова с Нурмагомедовым","YouTube","Характер и путь",1],
+ ["stop it","YouTube","Скетч Боба Ньюхарта «просто перестань»",0],
+ ["Феномен Седова","YouTube","Фильм о Владимире Седове, основателе Askona",0],
+ ["BlackBerry (2023)","Онлайн-кинотеатры","Как погубили компанию (2 парня и BlackBerry)",0],
+ ["Лебедев и Плюшки: переговоры","YouTube","Разбор переговоров",0],
+];
+const blogs=[
+ ["Максим Батырев","Книги, выступления","Менеджмент и продажи"],
+ ["Радислав Гандапас","Книги, выступления","Ораторское искусство"],
+ ["Михаил Гребенюк","Resulting, YouTube","Продажи и отделы продаж"],
+ ["Михаил Дашкиев","Бизнес Молодость","Предпринимательство и мышление"],
+ ["Мария Азаренок","Соцсети, книги","Личный бренд, синдром самозванца"],
+ ["Настасья Белочкина","Блог","Тему уточнить"],
+ ["Артём Сенатор","Блог","Тему уточнить"],
+];
+const clarify=[
+ "«Про пули» : нужна книга или материал. По словам, есть канал ТБ с видео : пришли, добавлю.",
+ "Настасья Белочкина и Артём Сенатор : уточнить платформу и тему блога.",
+ "Мария Азаренок : уточнить точное издание про синдром самозванца.",
+];
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function tbl(head, rows, tint){
+  const th="<tr>"+head.map(h=>`<th>${h}</th>`).join("")+"</tr>";
+  const body=rows.map(r=>{
+    const cls = tint&&r[3]===1 ? "prog" : "";
+    return `<tr class="${cls}">
+      <td class="t" data-l="${esc(head[0])}">${esc(r[0])}</td>
+      <td data-l="${esc(head[1])}"><span class="au">${esc(r[1])}</span></td>
+      <td class="m" data-l="${esc(head[2])}">${esc(r[2])}</td></tr>`;
+  }).join("");
+  return `<table class="tbl"><thead>${th}</thead><tbody>${body}</tbody></table>`;
+}
+function block(icon,title,count,inner,open){
+  return `<details class="ref" ${open?'open':''}>
+    <summary><span class="ico">${icon}</span> ${title}<span class="cnt">${count}<span class="arw">›</span></span></summary>
+    ${inner}</details>`;
+}
+document.getElementById("app").innerHTML =
+  block("📚","Книги", books.length+" шт", tbl(["Книга","Автор","О чём"], books, true), true) +
+  block("🎬","Видео и фильмы", videos.length+" шт", tbl(["Название","Где смотреть","О чём"], videos, true), false) +
+  block("✍️","Блоги и спикеры", blogs.length+" шт", tbl(["Кто","Где","О чём"], blogs, false), false) +
+  block("❓","Уточнить первоисточник", clarify.length+" шт",
+        `<ul class="clarify">${clarify.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>`, false);
+
+const KEY="tb_lib_adds_v1";
+const store={
+  get(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return []}},
+  set(a){try{localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}}
+};
+let mine=store.get();
+
+function renderMine(){
+  const el=document.getElementById("you");
+  document.getElementById("you-label").textContent = `Ваши добавления (${mine.length})`;
+  if(!mine.length){ el.innerHTML=`<p class="empty">Пока пусто. Добавьте первую находку через форму выше : она появится здесь.</p>`; return; }
+  const rows = mine.map((r,i)=>`<tr class="you">
+      <td class="t" data-l="Рубрика">${esc(r.type)}</td>
+      <td data-l="Название"><b>${esc(r.title)}</b>${r.author?` <span class="au">: ${esc(r.author)}</span>`:""}</td>
+      <td class="m" data-l="О чём">${esc(r.about||"")}</td>
+      <td style="width:34px;text-align:right"><button class="del" data-i="${i}" title="Удалить">✕</button></td>
+    </tr>`).join("");
+  el.innerHTML = `<table class="tbl"><thead><tr><th>Рубрика</th><th>Название и автор</th><th>О чём</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+  el.querySelectorAll(".del").forEach(b=>b.addEventListener("click",()=>{
+    mine.splice(+b.dataset.i,1); store.set(mine); renderMine(); flash("Удалено");
+  }));
+}
+function flash(t){const n=document.getElementById("savednote"); n.textContent=t; setTimeout(()=>{if(n.textContent===t)n.textContent=""},2400);}
+
+document.getElementById("add").addEventListener("click",()=>{
+  const type=document.getElementById("f-type").value;
+  const title=document.getElementById("f-title").value.trim();
+  const author=document.getElementById("f-author").value.trim();
+  const about=document.getElementById("f-about").value.trim();
+  if(!title){ flash("Впишите хотя бы название"); return; }
+  mine.push({type,title,author,about}); store.set(mine);
+  document.getElementById("f-title").value="";
+  document.getElementById("f-author").value="";
+  document.getElementById("f-about").value="";
+  renderMine(); flash("Добавлено ✓ Не забудьте «Скопировать для Юлии»");
+});
+document.getElementById("copy").addEventListener("click",()=>{
+  if(!mine.length){ flash("Пока нечего копировать"); return; }
+  const txt="Мои добавления в библиотеку ТБ:\n"+mine.map(r=>`[${r.type}] ${r.title}${r.author?" : "+r.author:""}${r.about?" : "+r.about:""}`).join("\n");
+  navigator.clipboard.writeText(txt).then(()=>flash("Скопировано ✓ Вставьте в чат или отправьте Юлии")).catch(()=>flash("Не удалось скопировать"));
+});
+document.getElementById("dl").addEventListener("click",()=>{
+  if(!mine.length){ flash("Пока нечего сохранять"); return; }
+  const blob=new Blob([JSON.stringify(mine,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="moi-dobavleniya-biblioteka.json"; a.click();
+});
+document.getElementById("clear").addEventListener("click",()=>{
+  if(mine.length && confirm("Удалить все ваши добавления из этого браузера?")){ mine=[]; store.set(mine); renderMine(); flash("Очищено"); }
+});
+renderMine();
+</script>
+</body>
+</html>
